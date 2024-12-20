@@ -1,0 +1,26 @@
+<main class="main">
+  <div class="container">
+    <mat-stepper #stepper linear>
+      <mat-step>
+        <ng-template matStepContent>
+          <app-home />
+        </ng-template>
+      </mat-step>
+      <mat-step [stepControl]="personalDataForm">
+        <app-personal-data [form]="personalDataForm" />
+      </mat-step>
+      <mat-step [stepControl]="personalDataForm">
+        <app-location-data [form]="personalDataForm" />
+      </mat-step>
+      <mat-step [stepControl]="contactDataForm">
+        <app-contact-data [form]="contactDataForm" />
+      </mat-step>
+      <mat-step [stepControl]="paymentDataForm">
+        <app-payment-data [form]="paymentDataForm" />
+      </mat-step>
+      <mat-step>
+        <ng-template matStepContent><app-analysis-result /></ng-template>
+      </mat-step>
+    </mat-stepper>
+  </div>
+</main>

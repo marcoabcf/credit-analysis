@@ -1,0 +1,29 @@
+<form [formGroup]="form">
+  <div class="container-title">
+    <p>Como podemos entrar em contato?</p>
+    <p class="subtitle">
+      Informe seu telefone e e-mail. Utilizamos estes dados para enviar
+      informações sobre sua simulação de crédito.
+    </p>
+  </div>
+  <mat-form-field class="full-width">
+    <mat-label>Celular</mat-label>
+    <input matInput formControlName="phone" />
+    <mat-error *ngIf="form.get('phone')?.invalid && form.get('phone')?.touched">
+      Celular é obrigatório.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>E-mail</mat-label>
+    <input matInput formControlName="email" />
+    <mat-error *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+      E-mail é obrigatório.
+    </mat-error>
+  </mat-form-field>
+
+  <div class="step-footer">
+    <button mat-raised-button (click)="goBackToStepper()">Voltar</button>
+    <button mat-raised-button (click)="goToPaymentData()">Avançar</button>
+  </div>
+</form>

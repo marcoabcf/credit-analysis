@@ -1,0 +1,117 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$credit-analysis-primary: mat.define-palette(mat.$indigo-palette);
+$credit-analysis-accent: mat.define-palette(mat.$green-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$credit-analysis-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$credit-analysis-theme: mat.define-light-theme((color: (primary: $credit-analysis-primary,
+                accent: $credit-analysis-accent,
+                warn: $credit-analysis-warn,
+            ),
+            typography: mat.define-typography-config(),
+            density: 0));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($credit-analysis-theme);
+
+:root {
+    --color-bg1: #1E3A8A;
+    --color-bg2: #10B981;
+    --color-bgInapto1: #ff4800;
+    --color-bgInapto2: #ffbb00;
+    --color-bgAptoLimit: #09ff00;
+    --color-bgApto: #297c4e;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background: linear-gradient(-40deg, var(--color-bg1), var(--color-bg2));
+    background-size: 200% 200%;
+    transition: background 1s ease;
+}
+
+.bg-1 {
+    background-position: 20% 50%;
+}
+
+.bg-2 {
+    background-position: 90% 100%;
+}
+
+.bg-3 {
+    background-position: 100% 20%;
+}
+
+.bg-4 {
+    background-position: 60% 20%;
+}
+
+.bg-inapto {
+    background: linear-gradient(-20deg, var(--color-bgInapto1), var(--color-bgInapto2));
+}
+
+.bg-apto-limit {
+    background: linear-gradient(40deg, var(--color-bgAptoLimit), var(--color-bgApto));
+}
+
+.bg-apto {
+    background: linear-gradient(70deg, var(--color-bgApto), var(--color-bg2));
+}
+
+
+.subtitle {
+    margin-bottom: 0 !important;
+    line-height: 1.2rem;
+    font-size: 1.2rem;
+}
+
+.container-title {
+    padding: 0.5rem 0;
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+
+.step-footer {
+    margin-top: 3rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+button {
+    font-size: 2rem !important;
+    height: 3.5rem !important;
+    color: #313131 !important;
+}
+
+.full-width {
+    width: 100%;
+}

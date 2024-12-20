@@ -1,0 +1,30 @@
+.container {
+    margin: 0 auto;
+    height: 100vh;
+    color: white;
+    opacity: 0.8;
+    user-select: none;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+mat-stepper {
+    background-color: transparent;
+}
+
+:host {
+    ::ng-deep {
+        .mat-horizontal-stepper-header-container {
+            display: none;
+        }
+    }
+}

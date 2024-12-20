@@ -1,0 +1,41 @@
+<form [formGroup]="form">
+  <div class="container-title">
+    <p>Quais são seus dados pessoais?</p>
+    <p class="subtitle">
+      Eles são importantes para uma análise de crédito precisa.
+    </p>
+  </div>
+  <mat-form-field class="full-width">
+    <mat-label>Renda Mensal (R$)</mat-label>
+    <input matInput formControlName="income" type="number" />
+    <mat-error
+      *ngIf="form.get('income')?.invalid && form.get('income')?.touched"
+    >
+      Renda Mensal é obrigatório.
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <mat-label>Fonte de Renda</mat-label>
+    <mat-select formControlName="incomeSource">
+      <mat-option
+        *ngFor="let incomeSourceOption of incomeSourceOptions"
+        [value]="incomeSourceOption"
+        >{{ incomeSourceOption }}</mat-option
+      >
+    </mat-select>
+    <mat-error
+      *ngIf="
+        form.get('incomeSource')?.invalid && form.get('incomeSource')?.touched
+      "
+    >
+      Fonte de Renda é obrigatório.
+    </mat-error>
+  </mat-form-field>
+
+  <div class="step-footer">
+    <button mat-raised-button (click)="goBackToStepper()">Voltar</button>
+    <button mat-raised-button (click)="goToPersonalData()">
+      Simular Crédito
+    </button>
+  </div>
+</form>

@@ -1,0 +1,41 @@
+<form [formGroup]="form">
+  <div class="container-title">
+    <p>Quais são seus dados pessoais?</p>
+    <p class="subtitle">
+      Eles são importantes para uma análise de crédito precisa.
+    </p>
+  </div>
+  <mat-form-field class="full-width">
+    <mat-label>Nome Completo</mat-label>
+    <input matInput formControlName="fullName" />
+    <mat-error
+      *ngIf="form.get('fullName')?.invalid && form.get('fullName')?.touched"
+    >
+      Nome completo é obrigatório.
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <mat-label>CPF</mat-label>
+    <input matInput formControlName="cpf" />
+    <mat-error *ngIf="form.get('cpf')?.invalid && form.get('cpf')?.touched">
+      CPF é obrigatório.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Data de Nascimento</mat-label>
+    <input matInput formControlName="dateOfBirth" type="date" />
+    <mat-error
+      *ngIf="
+        form.get('dateOfBirth')?.invalid && form.get('dateOfBirth')?.touched
+      "
+    >
+      Data de Nascimento é obrigatório.
+    </mat-error>
+  </mat-form-field>
+
+  <div class="step-footer">
+    <button mat-raised-button (click)="goToInit()">Desistir</button>
+    <button mat-raised-button (click)="goToLocationData()">Avançar</button>
+  </div>
+</form>

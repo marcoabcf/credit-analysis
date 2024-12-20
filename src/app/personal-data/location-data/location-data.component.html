@@ -1,0 +1,23 @@
+<form [formGroup]="form">
+  <div class="container-title">
+    <p>Onde mora?</p>
+    <p class="subtitle">
+      Se quiser, informe a cidade/estado que mora. Sua localização pode
+      influenciar em seu score.
+    </p>
+  </div>
+  <mat-form-field class="full-width">
+    <mat-label>Cidade</mat-label>
+    <input matInput formControlName="city" />
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Estado</mat-label>
+    <input matInput formControlName="state" />
+  </mat-form-field>
+
+  <div class="step-footer">
+    <button mat-raised-button (click)="goBackToStepper()">Voltar</button>
+    <button mat-raised-button (click)="goToContactData()">Avançar</button>
+  </div>
+</form>

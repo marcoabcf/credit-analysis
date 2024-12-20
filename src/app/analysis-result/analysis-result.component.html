@@ -1,0 +1,42 @@
+<div class="content-result">
+  @if(loading) {
+  <mat-progress-spinner color="warn" mode="indeterminate" />
+  } @else {
+  <div class="container-title">
+    <p>Resultado da Análise de Crédito</p>
+    <div class="credit-score">
+      <span class="label">Seu score é </span>
+      <span class="value">{{ result?.score }}.</span>
+    </div>
+    <div class="credit-status">
+      <span
+        class="value status"
+        [ngClass]="{
+          inapto: result?.status === 'Inapto',
+          'apto-limitado': result?.status === 'Apto com Limitações',
+          apto: result?.status === 'Apto'
+        }"
+      >
+        {{ result?.status }}
+      </span>
+    </div>
+    <div class="credit-limit">
+      @if(result?.limitCredit !== 0) {
+      <span class="label">O limite de crédito pré-aprovado é de </span>
+      <span class="value">{{ result?.limitCredit | currency : "BRL" }}.</span>
+      } @else {
+      <span class="label">Nenhum limite de crédito foi aprovado!</span>
+      }
+    </div>
+    <div class="date">
+      <span class="label">Data da Análise: </span>
+      <span class="value">{{
+        analysisDate | date : "dd/MM/yyyy HH:mm:ss"
+      }}</span>
+    </div>
+  </div>
+  <div class="step-footer">
+    <button mat-raised-button (click)="resetAnalysis()">Refazer análise</button>
+  </div>
+  }
+</div>
